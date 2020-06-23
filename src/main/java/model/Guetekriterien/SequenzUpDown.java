@@ -1,11 +1,14 @@
-package model;
+package model.Guetekriterien;
+
+import model.Guetekriterien.Guetekriterium;
+import model.Zufallszahlengenerator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SequenzUpDown implements Guetekriterium {
     @Override
-    public double berechneGuetekriterium(Zufallszahlengenerator generator,float[] zahlenfolge) {
+    public double berechneGuetekriterium(Zufallszahlengenerator generator, float[] zahlenfolge) {
         String bitfolge = "";
         int i = 0;
         while(i< zahlenfolge.length){

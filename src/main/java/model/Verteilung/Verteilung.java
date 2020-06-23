@@ -1,4 +1,4 @@
-package model;
+package model.Verteilung;
 
 public abstract class Verteilung {
     private boolean stetig;
@@ -11,6 +11,5 @@ public abstract class Verteilung {
         this.werteEnde = werteEnde;
 
     }
-    abstract double[] generiereVerteilung(float[] zufallszahlen);
 
 }

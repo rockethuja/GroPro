@@ -1,5 +1,8 @@
 package model;
 
+import model.Guetekriterien.Guetekriterium;
+import model.Verteilung.Verteilung;
+
 import java.util.ArrayList;
 
 public class Zufallszahlengenerator {
