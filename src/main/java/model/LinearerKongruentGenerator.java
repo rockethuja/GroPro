@@ -6,6 +6,16 @@ public class LinearerKongruentGenerator extends Generatorklasse {
     private long verschiebung;
     private long startwert;
 
+    public LinearerKongruentGenerator(boolean deterministisch, int startwert, long modul, long multiplikater, long verschiebung) {
+
+        super(deterministisch);
+        setModul(modul);
+        setMultiplikater(multiplikater);
+        setVerschiebung(verschiebung);
+        setStartwert(startwert);
+
+    }
+
     public void setModul(long modul) {
         if (modul < 0) {
             throw new IllegalArgumentException("Der Modulowert muss größer 0 sein.");
@@ -34,37 +44,27 @@ public class LinearerKongruentGenerator extends Generatorklasse {
         this.startwert = startwert;
     }
 
-    public LinearerKongruentGenerator(boolean deterministisch, int startwert, long modul, long multiplikater, long verschiebung) {
-        //TODO Primteiler etc
-        super(deterministisch);
-        setModul(modul);
-        setMultiplikater(multiplikater);
-        setVerschiebung(verschiebung);
-        setStartwert(startwert);
-
-    }
-
     @Override
-    public float[] generiereZahlenfolge(int n) {
-       float[] zahlenfolge = new float[n];
+    public double[] generiereZahlenfolge(int n) {
+       double[] zahlenfolge = new double[n];
         long x = this.startwert;
 
         for (int i = 0; i < n; i++) {
             x = (multiplikater * x + verschiebung) % modul;
-            long x1 = x/modul;
-            zahlenfolge[i] = (float)x1;
+            double x1 = (double) x/modul;
+            zahlenfolge[i] = x1;
         }
         return zahlenfolge;
     }
 
-    public float[] generiereZahlenfolge(int n, long startwer){
-        float[] zahlenfolge = new float[n];
+    public double[] generiereZahlenfolge(int n, long startwer){
+        double[] zahlenfolge = new double[n];
         long x = startwer;
 
         for (int i = 0; i < n; i++) {
             x = (multiplikater * x + verschiebung) % modul;
-            long x1 = x/modul;
-            zahlenfolge[i] = (float)x1;
+            double x1 = (double) x/modul;
+            zahlenfolge[i] = x1;
         }
         return zahlenfolge;
     }

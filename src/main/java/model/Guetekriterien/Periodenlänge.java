@@ -7,7 +7,7 @@ public class Periodenlänge implements Guetekriterium {
 
 
     @Override
-    public double berechneGuetekriterium(Zufallszahlengenerator generator, float[] zahlenfolge) {
+    public double berechneGuetekriterium(Zufallszahlengenerator generator, double[] zahlenfolge) {
         return 0;
     }
 }

@@ -12,12 +12,12 @@ public class EigenerGenerator extends Generatorklasse {
     }
 
     @Override
-    float[] generiereZahlenfolge(int n) {
-        return new float[0];
+    double[] generiereZahlenfolge(int n) {
+        return new double[0];
     }
 
     @Override
-    float[] generiereZahlenfolge(int n, double startwert) {
-        return new float[0];
+    double[] generiereZahlenfolge(int n, long startwert) {
+        return new double[0];
     }
 }

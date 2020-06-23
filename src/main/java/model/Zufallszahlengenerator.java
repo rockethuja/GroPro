@@ -17,8 +17,8 @@ public class Zufallszahlengenerator {
         this.verteilung =verteilung;
     }
 
-    public float[] generiereZahlenfolge(int n){
-        float[] zufallszahlen = generator.generiereZahlenfolge(n);
+    public double[] generiereZahlenfolge(int n){
+        double[] zufallszahlen = generator.generiereZahlenfolge(n);
         //double[] zufallszahlenverteilt = verteilung.generiereVerteilung(zufallszahlen) ;
         return zufallszahlen;
     }
@@ -26,5 +26,10 @@ public class Zufallszahlengenerator {
     public ArrayList<Guetekriterium> ermittleGuete(){
         return new ArrayList<Guetekriterium>();
 
+    }
+
+
+    public Verteilung getVerteilung() {
+        return verteilung;
     }
 }
