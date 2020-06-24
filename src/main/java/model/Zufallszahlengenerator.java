@@ -8,22 +8,36 @@ import model.verteilung.Verteilung;
 
 import java.util.ArrayList;
 
+/**
+ *Die Klasse bietet Funktionalitäten, um sich mit Hilfe einer Generatorklasse und einer Verteilung eine Zufallszahlenfolge generieren zu lassen
+ * Außerdem
+ */
 public class Zufallszahlengenerator {
 
     private Generatorklasse generator;
-    private Verteilung verteilung;
-    private ArrayList<Guetekriterium> guete;
-    private float[] zahlenfolge;
 
+    private Verteilung verteilung;
+
+
+
+
+
+    /**
+     *
+     * @param generator  Generatorklasse die bestimmt auf welcher Berechnungsgrundlage die Zufallszahlen generiert werden
+     * @param verteilung Die Verteilung der generierten Zufallszahlen
+     */
     public Zufallszahlengenerator(Generatorklasse generator,Verteilung verteilung){
         this.generator =generator;
         this.verteilung =verteilung;
-        this.guete = new ArrayList<>();
-        this.guete.add(new SerielleAutokorrelation("Serielle Autokorrelation"));
-        this.guete.add(new SequenzUpDown("Sequenz Up-Down-Test"));
-        this.guete.add(new Periodenlänge("Periodenlänge"));
 
     }
+
+    /**
+     *
+     * @param n Anzahl
+     * @return Zufallszahlenfolge der Grüße n
+     */
 
     public double[] generiereZahlenfolge(int n){
         return generiereZahlenfolge(n,generator.startwert);
@@ -32,15 +46,6 @@ public class Zufallszahlengenerator {
         double[] zufallszahlen = generator.generiereZahlenfolge(n,startwert);
         //double[] zufallszahlenverteilt = verteilung.generiereVerteilung(zufallszahlen) ;
         return zufallszahlen;
-    }
-
-    public ArrayList<Guetekriterium> ermittleGuete(){
-        return new ArrayList<Guetekriterium>();
-
-    }
-
-    public ArrayList<Guetekriterium> getGuete() {
-        return guete;
     }
 
     public Verteilung getVerteilung() {

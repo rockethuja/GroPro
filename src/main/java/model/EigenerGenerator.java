@@ -17,7 +17,7 @@ public class EigenerGenerator extends Generatorklasse {
         double[] zahlen = new double[n];
         double x= startwert;
         for (int i = 0; i < n; i++){
-            x =Math.abs(Math.sin(3*x+Math.pow(-1,i)*System.currentTimeMillis()));
+            x =Math.abs(Math.sin(3*x+Math.pow(-1,i)*5/6*Math.PI));
             zahlen[i]=x;
         }
             return zahlen;

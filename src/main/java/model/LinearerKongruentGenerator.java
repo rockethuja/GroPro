@@ -1,13 +1,15 @@
 package model;
 
+import java.math.BigInteger;
+
 public class LinearerKongruentGenerator extends Generatorklasse {
-    private long modul;
-    private long multiplikater;
-    private long verschiebung;
+    private BigInteger modul;
+    private BigInteger multiplikater;
+    private BigInteger verschiebung;
 
     public LinearerKongruentGenerator(boolean deterministisch, int startwert, String name, long modul, long multiplikater, long verschiebung) {
 
-        super(deterministisch,startwert, name);
+        super(deterministisch, startwert, name);
         setModul(modul);
         setMultiplikater(multiplikater);
         setVerschiebung(verschiebung);
@@ -19,25 +21,26 @@ public class LinearerKongruentGenerator extends Generatorklasse {
         if (modul < 0) {
             throw new IllegalArgumentException("Der Modulowert muss größer 0 sein.");
         }
-        this.modul = modul;
+        this.modul = BigInteger.valueOf(modul);
     }
 
     public void setMultiplikater(long multiplikater) {
-        if (multiplikater < 0 || multiplikater > modul) {
+
+        if (multiplikater < 0 || multiplikater > modul.longValue()) {
             throw new IllegalArgumentException("Der Multiplikator muss zwischen 0 und dem gewählten Modulo-Wert sein");
         }
-        this.multiplikater = multiplikater;
+        this.multiplikater = BigInteger.valueOf(multiplikater);
     }
 
     public void setVerschiebung(long verschiebung) {
-        if (verschiebung < 0 || verschiebung > modul) {
+        if (verschiebung < 0 || verschiebung > modul.longValue()) {
             throw new IllegalArgumentException("Der Multiplikator muss zwischen 0 und dem gewählten Modulo-Wert sein");
         }
-        this.verschiebung = verschiebung;
+        this.verschiebung = BigInteger.valueOf(verschiebung);
     }
 
     public void setStartwert(long startwert) {
-        if (startwert < 0 || startwert > modul) {
+        if (startwert < 0 || startwert > modul.longValue()) {
             throw new IllegalArgumentException("Der Multiplikator muss zwischen 0 und dem gewählten Modulo-Wert sein");
         }
         this.startwert = startwert;
@@ -45,28 +48,22 @@ public class LinearerKongruentGenerator extends Generatorklasse {
 
     @Override
     public double[] generiereZahlenfolge(int n) {
-       double[] zahlenfolge = new double[n];
-        long x = this.startwert;
-
-        for (int i = 0; i < n; i++) {
-            x = (multiplikater * x + verschiebung) % modul;
-            double x1 = (double) x/modul;
-            zahlenfolge[i] = x1;
-        }
-        return zahlenfolge;
+     return generiereZahlenfolge(n,this.startwert);
     }
 
-    public double[] generiereZahlenfolge(int n, long startwer){
+    public double[] generiereZahlenfolge(int n, long startwert) {
+
         double[] zahlenfolge = new double[n];
-        long x = startwer;
+        BigInteger rechner = BigInteger.valueOf(startwert);
 
         for (int i = 0; i < n; i++) {
-            x = (multiplikater * x + verschiebung) % modul;
-            double x1 = (double) x/modul;
-            zahlenfolge[i] = x1;
+            rechner = multiplikater.multiply(rechner);
+            rechner = rechner.add(verschiebung);
+            rechner = rechner.mod(modul);
+
+            zahlenfolge[i] =  rechner.doubleValue()/modul.doubleValue();
         }
         return zahlenfolge;
+
     }
-
-
 }

@@ -68,15 +68,20 @@ public class ZufallszahlenController {
 
         //PolarKoordinatenGenerator
         Generatorklasse generatorNormal = new PolarKoordinatenGenerator(true, generatorAnsiC, "Polar_Koordinaten");
-        Zufallszahlengenerator testNormal = new Zufallszahlengenerator(generatorNormal, new Normalverteilung(true, 0, 1, 0.1));
+        Zufallszahlengenerator testNormal = new Zufallszahlengenerator(generatorNormal, new Normalverteilung(true, 0, 1, 0));
         testGeneratoren.add(testNormal);
 
 
     }
 
     public void testAusgabe(int n) {
+       ArrayList<String> ausgabe = new ArrayList<>();
+       ausgabe.add("Generierung von Zufallszahlen für eine Folgenlänge n = "+ n );
         for (Zufallszahlengenerator gen : testGeneratoren) {
-            System.out.println(gen.getNameVonGenerator() + ": " + Arrays.toString(gen.generiereZahlenfolge(n)));
+          double[] zahlenfolge = gen.generiereZahlenfolge(n);
+          ausgabe.add(gen.getNameVonGenerator()+": "+Arrays.toString(zahlenfolge));
+
+          writeSolution(ausgabe,"TestGenerierung");
         }
 
 
@@ -84,33 +89,37 @@ public class ZufallszahlenController {
 
     public void run() {
         testAusgabe(20);
+        int[] testN ={10,100,1000,10000};
 
 
-        ArrayList<String> ausgabe = new ArrayList<>();
 
-        for (Zufallszahlengenerator gen : testGeneratoren) {
-            ausgabe.add(gen.getNameVonGenerator() + ": ");
-            ausgabe.add("_________________________________");
+        for(int i = 0; i < testN.length; i++) {
+            ArrayList<String> ausgabe = new ArrayList<>();
 
-            ArrayList<Guetekriterium> guetekriterien = gen.getGuete();
-            for (Guetekriterium kriterium : guetekriterien) {
-                ausgabe.add(kriterium.getName());
+            for (Zufallszahlengenerator gen : testGeneratoren) {
+                ausgabe.add(gen.getNameVonGenerator() + ": ");
 
-                double wert = kriterium.berechneGuetekriterium(gen, gen.generiereZahlenfolge(20));
 
-                ausgabe.add(String.valueOf(wert));
+                for (Guetekriterium kriterium : guetekriterien) {
+                    ausgabe.add(kriterium.getName());
 
+                    double wert = kriterium.berechneGuetekriterium(gen, gen.generiereZahlenfolge(testN[i]));
+
+                    ausgabe.add(String.valueOf(wert));
+
+                }
+                ausgabe.add("_________________________________");
             }
-            ausgabe.add("_________________________________");
+
+
+            writeSolution(ausgabe, String.valueOf(testN[i]));
+
+            ausgabe.clear();
         }
-
-
-        writeSolution(ausgabe);
-
     }
 
-    private void writeSolution(ArrayList<String> ausgabe) {
-        WriteOutput writer = new TextFileWriter(new File("Ausgabe.txt"));
+    private void writeSolution(ArrayList<String> ausgabe, String path) {
+        WriteOutput writer = new TextFileWriter(new File(path+".txt"));
         writer.writeData(ausgabe);
     }
 

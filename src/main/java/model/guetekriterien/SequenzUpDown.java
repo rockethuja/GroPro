@@ -4,18 +4,21 @@ import model.Zufallszahlengenerator;
 
 import java.util.*;
 
-/**
- *
- */
+
 public class SequenzUpDown extends Guetekriterium {
     public SequenzUpDown(String name) {
         super(name);
     }
 
     /**
-     * @param generator
-     * @param zahlenfolge
-     * @return
+     *
+     * Berechnet für einen Zufallszahlengenerator und eine bestimmte Menge an Zufallszahlen die durchschnittliche Abweichung vom zu erwarteten Wert für den Up-Down Test.
+     * Gibt Hinweis darauf  wie die Reihenfolge von generierten Zufallszahlen in einer Folge ist.
+     * Der Up-Down-Test geht davon aus, dass bei einer unkorrelierten Zufallsfolge ein Wechsel von Zufallszahlen die aufsteigen oder absteigen in gewisser Anzahl zu erwarten ist.
+     *
+     * @param generator Zufallszahlengenerator
+     * @param zahlenfolge Zufallszahlen
+     * @return Wert der Durchschnittlichen Abweichung , Summe aller Differenzen von tatsächlichen zu erwarteten Werten dividiert durch die Anzahl der betrachteten Zahlen
      */
     @Override
     public double berechneGuetekriterium(Zufallszahlengenerator generator, double[] zahlenfolge) {
@@ -36,7 +39,7 @@ public class SequenzUpDown extends Guetekriterium {
         double diff = 0;
         for (Map.Entry<Integer, Integer> n : set) {
             int k = n.getKey();
-            double kEw = berechnekEw(k, anzahl);
+            double kEw = berechnekEw(k, anzahl-1);
             diff+= Math.abs(kEw-k);
         }
 
@@ -44,47 +47,5 @@ public class SequenzUpDown extends Guetekriterium {
         return diff/anzahl;
     }
 
-    private double berechnekEw(int k, int n) {
-         double kEw= ((k * k + 3 * k + 1) * n - (Math.pow(k, 3) + 3 * k * k - k - 4)) / ((fakul(k + 3)) / 2);
-    return  kEw;
-    }
 
-    private double fakul(int i) {
-        if (i == 1) {
-            return 1;
-        } else {
-            return i* fakul(i - 1);
-        }
-    }
-
-    private HashMap<Integer, Integer> getBitEnumeration(ArrayList<Integer> length) {
-        HashMap<Integer, Integer> enumeration = new HashMap<>();
-        for (int bit : length) {
-            if (enumeration.containsKey(bit)) {
-                int count = enumeration.get(bit);
-                enumeration.put(bit, ++count);
-            } else {
-                enumeration.put(bit, 0);
-            }
-        }
-        return enumeration;
-    }
-
-    private ArrayList<Integer> getBitLength(String bitfolge) {
-        ArrayList<Integer> length = new ArrayList<>();
-        int count = 1;
-        char n1 = bitfolge.charAt(0);
-        for (int j = 1; j < bitfolge.length(); j++) {
-            char n2 = bitfolge.charAt(j);
-            if (n1 == n2) {
-                count++;
-
-            } else {
-                length.add(count);
-                count = 1;
-            }
-            n1 = n2;
-        }
-        return length;
-    }
 }

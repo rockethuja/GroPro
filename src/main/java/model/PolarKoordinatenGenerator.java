@@ -25,7 +25,7 @@ public class PolarKoordinatenGenerator extends Generatorklasse {
         while (count < n) {
 
             try {
-                double[] a = generierePolarKoordinatenpaar(gleichverteilteZahlen[i++], gleichverteilteZahlen[i++]);
+                double[] a = generierePolarKoordinatenpaar(gleichverteilteZahlen[i++]*2-1, gleichverteilteZahlen[i++]*2-1);
                 normalverteilteZahlen[count++] = a[0];
                 if (count < n) {
                     normalverteilteZahlen[count++] = a[1];
@@ -54,7 +54,7 @@ public class PolarKoordinatenGenerator extends Generatorklasse {
         double q = Math.pow(u, 2) + Math.pow(v, 2);
 
         if (q < 0 || q >= 1) {
-            throw new ArithmeticException("Q muss im Interval [0,1]liegen");
+            throw new ArithmeticException("Q muss im Interval [0,1] liegen");
         }
 
         double p =  Math.sqrt((-2 * Math.log(q)) / q);
