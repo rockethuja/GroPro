@@ -4,16 +4,21 @@ package model;
 public class PolarKoordinatenGenerator extends Generatorklasse {
     Generatorklasse gleichverteilung;
 
-    public PolarKoordinatenGenerator(boolean deterministisch, Generatorklasse gleichverteilung) {
-        super(deterministisch);
+    public PolarKoordinatenGenerator(boolean deterministisch, Generatorklasse gleichverteilung, String name) {
+        super(deterministisch,gleichverteilung.startwert,name);
         this.gleichverteilung = gleichverteilung;
 
     }
 
     @Override
     double[] generiereZahlenfolge(int n) {
+       return generiereZahlenfolge(n,startwert);
+    }
 
-        double[] gleichverteilteZahlen = gleichverteilung.generiereZahlenfolge(n);
+    @Override
+    double[] generiereZahlenfolge(int n, long startwert) {
+
+        double[] gleichverteilteZahlen = gleichverteilung.generiereZahlenfolge(n,startwert);
         double[] normalverteilteZahlen = new double[n];
         int count = 0;
         int i = 0;
@@ -38,11 +43,6 @@ public class PolarKoordinatenGenerator extends Generatorklasse {
 
 
         return normalverteilteZahlen;
-    }
-
-    @Override
-    double[] generiereZahlenfolge(int n, long startwert) {
-        return new double[0];
     }
 
     protected double[] generierePolarKoordinatenpaar(double u, double v) {

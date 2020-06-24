@@ -1,9 +1,8 @@
-package model.Verteilung;
+package model.verteilung;
 
-import model.Verteilung.Verteilung;
 
 public class Normalverteilung extends Verteilung {
-    private double erwartungswert;
+
 
     public Normalverteilung(boolean stetig, int werteBegin, int werteEnde, double erwartungswert) {
         super(stetig, werteBegin, werteEnde,erwartungswert);

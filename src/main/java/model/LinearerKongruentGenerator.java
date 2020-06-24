@@ -4,11 +4,10 @@ public class LinearerKongruentGenerator extends Generatorklasse {
     private long modul;
     private long multiplikater;
     private long verschiebung;
-    private long startwert;
 
-    public LinearerKongruentGenerator(boolean deterministisch, int startwert, long modul, long multiplikater, long verschiebung) {
+    public LinearerKongruentGenerator(boolean deterministisch, int startwert, String name, long modul, long multiplikater, long verschiebung) {
 
-        super(deterministisch);
+        super(deterministisch,startwert, name);
         setModul(modul);
         setMultiplikater(multiplikater);
         setVerschiebung(verschiebung);

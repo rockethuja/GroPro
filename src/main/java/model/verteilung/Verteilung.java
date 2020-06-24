@@ -1,4 +1,4 @@
-package model.Verteilung;
+package model.verteilung;
 
 public abstract class Verteilung {
     private boolean stetig;

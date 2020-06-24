@@ -2,22 +2,24 @@ package model;
 
 public class EigenerGenerator extends Generatorklasse {
 
-    private float startwert;
 
-
-    public EigenerGenerator(boolean deterministisch, int startwert) {
-        super(deterministisch);
-        this.startwert = startwert;
-
+    public EigenerGenerator(boolean deterministisch, int startwert, String name) {
+        super(deterministisch,startwert,name);
     }
 
     @Override
-    double[] generiereZahlenfolge(int n) {
-        return new double[0];
+    public double[] generiereZahlenfolge(int n) {
+        return generiereZahlenfolge(n,this.startwert);
     }
 
     @Override
-    double[] generiereZahlenfolge(int n, long startwert) {
-        return new double[0];
+    public double[] generiereZahlenfolge(int n, long startwert) {
+        double[] zahlen = new double[n];
+        double x= startwert;
+        for (int i = 0; i < n; i++){
+            x =Math.abs(Math.sin(3*x+Math.pow(-1,i)*System.currentTimeMillis()));
+            zahlen[i]=x;
+        }
+            return zahlen;
     }
 }

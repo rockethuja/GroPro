@@ -1,6 +1,5 @@
-package model.Guetekriterien;
+package model.guetekriterien;
 
-import model.Guetekriterien.Guetekriterium;
 import model.Zufallszahlengenerator;
 
 import java.util.*;
@@ -8,7 +7,11 @@ import java.util.*;
 /**
  *
  */
-public class SequenzUpDown implements Guetekriterium {
+public class SequenzUpDown extends Guetekriterium {
+    public SequenzUpDown(String name) {
+        super(name);
+    }
+
     /**
      * @param generator
      * @param zahlenfolge
