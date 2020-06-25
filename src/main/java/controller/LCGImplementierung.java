@@ -1,6 +1,6 @@
 package controller;
 
-public enum LCGVarianten {
+public enum LCGImplementierung {
     /**
      * m = 2^31 <br>
      * a = 1103515245 <br>

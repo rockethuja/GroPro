@@ -1,4 +1,6 @@
-package model;
+package model.generatoren;
+
+import model.generatoren.Generatorklasse;
 
 import java.math.BigInteger;
 
@@ -9,11 +11,13 @@ public class LinearerKongruentGenerator extends Generatorklasse {
 
     public LinearerKongruentGenerator(boolean deterministisch, int startwert, String name, long modul, long multiplikater, long verschiebung) {
 
-        super(deterministisch, startwert, name);
+        super(deterministisch,0 , name);
+
         setModul(modul);
         setMultiplikater(multiplikater);
         setVerschiebung(verschiebung);
-        setStartwert(startwert);
+        setLinearStartwert(startwert);
+
 
     }
 
@@ -39,16 +43,16 @@ public class LinearerKongruentGenerator extends Generatorklasse {
         this.verschiebung = BigInteger.valueOf(verschiebung);
     }
 
-    public void setStartwert(long startwert) {
+    public void  setLinearStartwert(long startwert) {
         if (startwert < 0 || startwert > modul.longValue()) {
             throw new IllegalArgumentException("Der Multiplikator muss zwischen 0 und dem gewählten Modulo-Wert sein");
         }
-        this.startwert = startwert;
+        this.setStartwert(startwert);
     }
 
     @Override
     public double[] generiereZahlenfolge(int n) {
-     return generiereZahlenfolge(n,this.startwert);
+     return generiereZahlenfolge(n,getStartwert());
     }
 
     public double[] generiereZahlenfolge(int n, long startwert) {

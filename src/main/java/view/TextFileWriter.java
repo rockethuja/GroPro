@@ -1,6 +1,5 @@
 package view;
 
-import view.WriteOutput;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -8,14 +7,20 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Implementierung der WriteOutput-Schnittstelle als Tetdatei Ausgabe
+ */
 public class TextFileWriter implements WriteOutput {
     private File file;
 
+    /**
+     *
+     * @param file Ausgabefile
+     */
     public TextFileWriter(File file){
         this.file = file;
     }
     @Override
-    //anstatt liste dann das Model übergeben
     public void writeData(List<String> ausgabe) {
 
 

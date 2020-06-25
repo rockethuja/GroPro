@@ -1,8 +1,0 @@
-controller\TextFileReader.class
-controller\WriteOutput.class
-Main.class
-controller\Controller.class
-controller\SolveStrategyImpl.class
-controller\SolveStrategy.class
-controller\TextFileWriter.class
-controller\ReadInput.class

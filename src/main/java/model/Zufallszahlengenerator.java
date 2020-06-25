@@ -1,12 +1,7 @@
 package model;
 
-import model.guetekriterien.Guetekriterium;
-import model.guetekriterien.Periodenlänge;
-import model.guetekriterien.SequenzUpDown;
-import model.guetekriterien.SerielleAutokorrelation;
+import model.generatoren.Generatorklasse;
 import model.verteilung.Verteilung;
-
-import java.util.ArrayList;
 
 /**
  *Die Klasse bietet Funktionalitäten, um sich mit Hilfe einer Generatorklasse und einer Verteilung eine Zufallszahlenfolge generieren zu lassen
@@ -40,11 +35,17 @@ public class Zufallszahlengenerator {
      */
 
     public double[] generiereZahlenfolge(int n){
-        return generiereZahlenfolge(n,generator.startwert);
+        return generiereZahlenfolge(n,generator.getStartwert());
     }
+
+    /**
+     *
+     * @param n Anzahl
+     * @param startwert Startwert von dem aus die Zahlenfolge gerechnet werden soll
+     * @return
+     */
     public double[] generiereZahlenfolge(int n, long startwert){
         double[] zufallszahlen = generator.generiereZahlenfolge(n,startwert);
-        //double[] zufallszahlenverteilt = verteilung.generiereVerteilung(zufallszahlen) ;
         return zufallszahlen;
     }
 
