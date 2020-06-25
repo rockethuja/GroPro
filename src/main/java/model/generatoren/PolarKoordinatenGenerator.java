@@ -7,6 +7,7 @@ public class PolarKoordinatenGenerator extends Generatorklasse {
     Generatorklasse gleichverteilung;
 
     public PolarKoordinatenGenerator(boolean deterministisch, Generatorklasse gleichverteilung, String name) {
+
         super(deterministisch,gleichverteilung.getStartwert(),name);
         this.gleichverteilung = gleichverteilung;
 

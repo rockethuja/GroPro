@@ -1,6 +1,5 @@
 package model.generatoren;
 
-import model.generatoren.Generatorklasse;
 
 import java.math.BigInteger;
 

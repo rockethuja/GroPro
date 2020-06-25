@@ -106,7 +106,7 @@ public class ZufallszahlenController {
      * @param gen Zufallszahlengenertor
      * @param n verschieden Längen für die getestet wird
      */
-    public void testGenerator(Zufallszahlengenerator gen, int[] n) {
+    private void testGenerator(Zufallszahlengenerator gen, int[] n) {
         ArrayList<String> ausgabe = new ArrayList<>();
         ausgabe.add("Berechnungen für " + gen.getNameVonGenerator());
 
@@ -159,7 +159,7 @@ public class ZufallszahlenController {
      * @param n Anzahl
      */
 
-    public void testAusgabe(int n) {
+    private void testAusgabe(int n) {
         ArrayList<String> ausgabe = new ArrayList<>();
         ausgabe.add("Generierung von Zufallszahlen für eine Folgenlänge n = " + n);
         for (Zufallszahlengenerator gen : testGeneratoren) {

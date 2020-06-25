@@ -7,7 +7,7 @@ package model.generatoren;
  * Durch Math.abs() wird der negative Bereich wieder auf den positiven Bereich abgebildet.
  * Der Wertmultiplikator verkleinert den Vorgängerwert.
  * Daraufhin wird eine Phasenverschiebung erreicht indem je nach Iteration ( Math.pow(-1, i)) ein Wert der von Pi
- * abhängt addiert oder dubtrahiert wird. Für piMultiplikator = k*pi wird eine ganze Periode verschoben, deswegen bracuht man
+ * abhängt addiert oder dubtrahiert wird. Für piMultiplikator = k*pi wird eine ganze Periode verschoben, deswegen braucht man
  * den wertMultiplikator. Damit dieses Risiko minimiert wird.
  * Es emphielt sich eine nicht ganzzahlige Zahl für den piMultiplikator zu nehmen, um nicht eine regelmäßige Periodenverschiebung zu erreichen.
  *
